@@ -10123,6 +10123,7 @@
     */
     DrawingShared.prototype.size = function(aWidth, aHeight, aMode) {
       p.stroke(0);
+	  var fillHolder = doFill;
       p.fill(255);
 
       // The default 2d context has already been created in the p.init() stage if
@@ -10167,6 +10168,7 @@
         sinLUT[i] = p.sin(i * (PConstants.PI / 180) * 0.5);
         cosLUT[i] = p.cos(i * (PConstants.PI / 180) * 0.5);
       }
+	  doFill = fillHolder;
     };
 
     Drawing2D.prototype.size = function(aWidth, aHeight, aMode) {
