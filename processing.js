@@ -2726,15 +2726,6 @@
     DrawingPre.prototype = new DrawingShared();
     DrawingPre.prototype.constructor = DrawingPre;
 
-    //Throws an error that informs the user that the current method is not supported
-    //in te 2D rendering mode.
-    var throwError2DMode = function(){
-	  throw(arguments.callee.toString() + "() is not supported in 2D mode.");
-    }
-
-    DrawingShared.prototype.a3DOnlyFunction = throwError2DMode;
-	
-
     ////////////////////////////////////////////////////////////////////////////
     // Char handling
     ////////////////////////////////////////////////////////////////////////////
@@ -7824,7 +7815,9 @@
     * @see popMatrix
     * @see pushMatrix
     */
-    Drawing2D.prototype.rotateZ = DrawingShared.prototype.a3DOnlyFunction;
+    Drawing2D.prototype.rotateZ = function(){
+	  throw("rotateZ() is not supported in 2D mode.");
+    };
 
     Drawing3D.prototype.rotateZ = function(angleInRadians) {
       modelView.rotateZ(angleInRadians);
@@ -10362,7 +10355,9 @@
      * @see pointLight
      * @see spotLight
     */
-    Drawing2D.prototype.ambientLight = DrawingShared.prototype.a3DOnlyFunction;
+    Drawing2D.prototype.ambientLight = function(){
+	  throw("ambientLight() is not supported in 2D mode.");
+    };
 
     Drawing3D.prototype.ambientLight = function(r, g, b, x, y, z) {
       if (lightCount === PConstants.MAX_LIGHTS) {
@@ -10417,7 +10412,9 @@
      * @see pointLight
      * @see spotLight
     */
-    Drawing2D.prototype.directionalLight = DrawingShared.prototype.a3DOnlyFunction;
+    Drawing2D.prototype.directionalLight = function(){
+	  throw("directionalLight() is not supported in 2D mode.");
+    };
 
     Drawing3D.prototype.directionalLight = function(r, g, b, nx, ny, nz) {
       if (lightCount === PConstants.MAX_LIGHTS) {
@@ -10480,7 +10477,9 @@
      * @see spotLight
      * @see lightSpecular
     */
-    Drawing2D.prototype.lightFalloff = DrawingShared.prototype.a3DOnlyFunction;
+    Drawing2D.prototype.lightFalloff = function(){
+	  throw("lightFalloff() is not supported in 2D mode.");
+    };
 
     Drawing3D.prototype.lightFalloff = function(constant, linear, quadratic) {
       curContext.useProgram(programObject3D);
@@ -10506,7 +10505,9 @@
      * @see pointLight
      * @see spotLight
     */
-    Drawing2D.prototype.lightSpecular = DrawingShared.prototype.a3DOnlyFunction;
+    Drawing2D.prototype.lightSpecular = function(){
+	  throw("lightSpecular() is not supported in 2D mode.");
+    };
 
     Drawing3D.prototype.lightSpecular = function(r, g, b) {
 
@@ -10539,7 +10540,9 @@
      * @see noLights
      *
     */
-    Drawing2D.prototype.lights = DrawingShared.prototype.a3DOnlyFunction;
+    Drawing2D.prototype.lights = function(){
+	  throw("lights() is not supported in 2D mode.");
+    };
 
     Drawing3D.prototype.lights = function() {
       p.ambientLight(128, 128, 128);
@@ -10570,7 +10573,9 @@
      * @see ambientLight
      * @see spotLight
     */
-    Drawing2D.prototype.pointLight = DrawingShared.prototype.a3DOnlyFunction;
+    Drawing2D.prototype.pointLight = function(){
+	  throw("pointLight() is not supported in 2D mode.");
+    };
 
     Drawing3D.prototype.pointLight = function(r, g, b, x, y, z) {
       if (lightCount === PConstants.MAX_LIGHTS) {
@@ -10609,7 +10614,9 @@
      *
      * @see lights
     */
-    Drawing2D.prototype.noLights = DrawingShared.prototype.a3DOnlyFunction;
+    Drawing2D.prototype.noLights = function(){
+	  throw("noLights() is not supported in 2D mode.");
+    };
 
     Drawing3D.prototype.noLights = function() {
       lightCount = 0;
@@ -10646,7 +10653,9 @@
      * @see ambientLight
      * @see pointLight
     */
-    Drawing2D.prototype.spotLight = DrawingShared.prototype.a3DOnlyFunction;
+    Drawing2D.prototype.spotLight = function(){
+	  throw("spotLight() is not supported in 2D mode.");
+    };
 
     Drawing3D.prototype.spotLight = function(r, g, b, x, y, z, nx, ny, nz, angle, concentration) {
       if (lightCount === PConstants.MAX_LIGHTS) {
@@ -10715,7 +10724,9 @@
      * @see rotate
      * @see scale
      */
-    Drawing2D.prototype.beginCamera = fDrawingShared.prototype.a3DOnlyFunction;
+    Drawing2D.prototype.beginCamera = function(){
+	  throw("beginCamera() is not supported in 2D mode.");
+    };
 
     Drawing3D.prototype.beginCamera = function() {
       if (manipulatingCamera) {
@@ -10732,7 +10743,9 @@
      *
      * @see beginCamera
      */
-    Drawing2D.prototype.endCamera = DrawingShared.prototype.a3DOnlyFunction;
+    Drawing2D.prototype.endCamera = function(){
+	  throw("endCamera() is not supported in 2D mode.");
+    };
 
     Drawing3D.prototype.endCamera = function() {
       if (!manipulatingCamera) {
@@ -10765,7 +10778,9 @@
      * @see endCamera
      * @see frustum
      */
-    Drawing2D.prototype.camera = DrawingShared.prototype.a3DOnlyFunction;
+    Drawing2D.prototype.camera = function(){
+	  throw("camera() is not supported in 2D mode.");
+    };
 
     Drawing3D.prototype.camera = function(eyeX, eyeY, eyeZ, centerX, centerY, centerZ, upX, upY, upZ) {
       if (eyeX === undef) {
@@ -10830,7 +10845,9 @@
      * @param {float} zNear   z-position of nearest clipping plane
      * @param {float} zFar    z-positions of farthest clipping plane
      */
-    Drawing2D.prototype.perspective = DrawingShared.prototype.a3DOnlyFunction;
+    Drawing2D.prototype.perspective = function(){
+	  throw("perspective() is not supported in 2D mode.");
+    };
 
     Drawing3D.prototype.perspective = function(fov, aspect, near, far) {
       if (arguments.length === 0) {
@@ -10870,7 +10887,9 @@
      * @see endCamera
      * @see perspective
      */
-    Drawing2D.prototype.frustum = DrawingShared.prototype.a3DOnlyFunction;
+    Drawing2D.prototype.frustum = function(){
+	  throw("frustum() is not supported in 2D mode.");
+    };
 
     Drawing3D.prototype.frustum = function(left, right, bottom, top, near, far) {
       frustumMode = true;
@@ -10904,7 +10923,9 @@
      * @param {float} near   maximum distance from the origin to the viewer
      * @param {float} far    maximum distance from the origin away from the viewer
      */
-    Drawing2D.prototype.ortho = DrawingShared.prototype.a3DOnlyFunction;
+    Drawing2D.prototype.ortho = function(){
+	  throw("ortho() is not supported in 2D mode.");
+    };
 
     Drawing3D.prototype.ortho = function(left, right, bottom, top, near, far) {
       if (arguments.length === 0) {
@@ -10941,7 +10962,9 @@
     /**
      * The printProjection() prints the current projection matrix to the text window.
      */
-    Drawing2D.prototype.printProjection = DrawingShared.prototype.a3DOnlyFunction;
+    Drawing2D.prototype.printProjection = function(){
+	  throw("printProjection() is not supported in 2D mode.");
+    };
 
     Drawing3D.prototype.printProjection = function() {
       projection.print();
@@ -10949,7 +10972,9 @@
     /**
      * The printCamera() function prints the current camera matrix.
      */
-    Drawing2D.prototype.printCamera = DrawingShared.prototype.a3DOnlyFunction;
+    Drawing2D.prototype.printCamera = function(){
+	  throw("printCamera() is not supported in 2D mode.");
+    };
 
     Drawing3D.prototype.printCamera = function() {
       cam.print();
@@ -10966,7 +10991,9 @@
      * @param {int|float} h  dimension of the box in the y-dimension
      * @param {int|float} d  dimension of the box in the z-dimension
      */
-    Drawing2D.prototype.box = DrawingShared.prototype.a3DOnlyFunction;
+    Drawing2D.prototype.box = function(){
+	  throw("box() is not supported in 2D mode.");
+    };
 
     Drawing3D.prototype.box = function(w, h, d) {
       // user can uniformly scale the box by
@@ -11143,7 +11170,9 @@
      *
      * @see #sphere()
      */
-    Drawing2D.prototype.sphereDetail = DrawingShared.prototype.a3DOnlyFunction;
+    Drawing2D.prototype.sphereDetail = function(){
+	  throw("sphereDetail() is not supported in 2D mode.");
+    };
 
     Drawing3D.prototype.sphereDetail = function(ures, vres) {
       var i;
@@ -11209,7 +11238,9 @@
      *
      * @param {int|float} r the radius of the sphere
      */
-    Drawing2D.prototype.sphere = DrawingShared.prototype.a3DOnlyFunction;
+    Drawing2D.prototype.sphere = function(){
+	  throw("sphere() is not supported in 2D mode.");
+    };
 
     Drawing3D.prototype.sphere = function() {
       var sRad = arguments[0];
@@ -11308,7 +11339,9 @@
      * @see modelY
      * @see modelZ
     */
-    Drawing2D.prototype.modelX = DrawingShared.prototype.a3DOnlyFunction;
+    Drawing2D.prototype.modelX = function(){
+	  throw("modelX() is not supported in 2D mode.");
+    };
 
     Drawing3D.prototype.modelX = function(x, y, z) {
       var mv = modelView.array();
@@ -11342,7 +11375,9 @@
      * @see modelX
      * @see modelZ
     */
-    Drawing2D.prototype.modelY = DrawingShared.prototype.a3DOnlyFunction;
+    Drawing2D.prototype.modelY = function(){
+	  throw("modelY() is not supported in 2D mode.");
+    };
 
     Drawing3D.prototype.modelY = function(x, y, z) {
       var mv = modelView.array();
@@ -11375,7 +11410,9 @@
      * @see modelX
      * @see modelY
     */
-    Drawing2D.prototype.modelZ = DrawingShared.prototype.a3DOnlyFunction;
+    Drawing2D.prototype.modelZ = function(){
+	  throw("modelZ() is not supported in 2D mode.");
+    };
 
     Drawing3D.prototype.modelZ = function(x, y, z) {
       var mv = modelView.array();
@@ -11413,7 +11450,9 @@
      * @see specular
      * @see shininess
     */
-    Drawing2D.prototype.ambient = DrawingShared.prototype.a3DOnlyFunction;
+    Drawing2D.prototype.ambient = function(){
+	  throw("ambient() is not supported in 2D mode.");
+    };
 
     Drawing3D.prototype.ambient = function(v1, v2, v3) {
       curContext.useProgram(programObject3D);
@@ -11446,7 +11485,9 @@
      * @see specular
      * @see shininess
     */
-    Drawing2D.prototype.emissive = DrawingShared.prototype.a3DOnlyFunction;
+    Drawing2D.prototype.emissive = function(){
+	  throw("emissive() is not supported in 2D mode.");
+    };
 
     Drawing3D.prototype.emissive = function(v1, v2, v3) {
       curContext.useProgram(programObject3D);
@@ -11464,7 +11505,9 @@
      *
      * @returns none
     */
-    Drawing2D.prototype.shininess = DrawingShared.prototype.a3DOnlyFunction;
+    Drawing2D.prototype.shininess = function(){
+	  throw("shininess() is not supported in 2D mode.");
+    };
 
     Drawing3D.prototype.shininess = function(shine) {
       curContext.useProgram(programObject3D);
@@ -11508,7 +11551,9 @@
      * @see emissive
      * @see shininess
     */
-    Drawing2D.prototype.specular = DrawingShared.prototype.a3DOnlyFunction;
+    Drawing2D.prototype.specular = function(){
+	  throw("specular() is not supported in 2D mode.");
+    };
 
     Drawing3D.prototype.specular = function(v1, v2, v3) {
       curContext.useProgram(programObject3D);
@@ -11534,7 +11579,9 @@
      * @see screenY
      * @see screenZ
     */
-    Drawing2D.prototype.screenX = DrawingShared.prototype.a3DOnlyFunction;
+    Drawing2D.prototype.screenX = function(){
+	  throw("screenX() is not supported in 2D mode.");
+    };
 
     Drawing3D.prototype.screenX = function( x, y, z ) {
       var mv = modelView.array();
@@ -11572,7 +11619,9 @@
      * @see screenX
      * @see screenZ
     */
-    Drawing2D.prototype.screenY = DrawingShared.prototype.a3DOnlyFunction;
+    Drawing2D.prototype.screenY = function(){
+	  throw("screenY() is not supported in 2D mode.");
+    };
 
     Drawing3D.prototype.screenY = function screenY( x, y, z ) {
       var mv = modelView.array();
@@ -11609,7 +11658,9 @@
      * @see screenX
      * @see screenY
     */
-    Drawing2D.prototype.screenZ = DrawingShared.prototype.a3DOnlyFunction;
+    Drawing2D.prototype.screenZ = function(){
+	  throw("screenZ() is not supported in 2D mode.");
+    };
 
     Drawing3D.prototype.screenZ = function screenZ( x, y, z ) {
       var mv = modelView.array();
