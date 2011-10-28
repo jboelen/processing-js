@@ -7819,9 +7819,7 @@
     * @see popMatrix
     * @see pushMatrix
     */
-    Drawing2D.prototype.rotateZ = function() {
-      throw "rotateZ() is not supported in 2D mode. Use rotate(float) instead.";
-    };
+    Drawing2D.prototype.rotateZ = DrawingShared.prototype.a3DOnlyFunction;
 
     Drawing3D.prototype.rotateZ = function(angleInRadians) {
       modelView.rotateZ(angleInRadians);
@@ -10536,7 +10534,9 @@
      * @see noLights
      *
     */
-    p.lights = function() {
+    Drawing2D.prototype.lights = DrawingShared.prototype.a3DOnlyFunction;
+
+    Drawing3D.prototype.lights = function() {
       p.ambientLight(128, 128, 128);
       p.directionalLight(128, 128, 128, 0, 0, -1);
       p.lightFalloff(1, 0, 0);
@@ -10710,9 +10710,7 @@
      * @see rotate
      * @see scale
      */
-    Drawing2D.prototype.beginCamera = function() {
-      throw ("beginCamera() is not available in 2D mode");
-    };
+    Drawing2D.prototype.beginCamera = fDrawingShared.prototype.a3DOnlyFunction;
 
     Drawing3D.prototype.beginCamera = function() {
       if (manipulatingCamera) {
@@ -10729,9 +10727,7 @@
      *
      * @see beginCamera
      */
-    Drawing2D.prototype.endCamera = function() {
-      throw ("endCamera() is not available in 2D mode");
-    };
+    Drawing2D.prototype.endCamera = DrawingShared.prototype.a3DOnlyFunction;
 
     Drawing3D.prototype.endCamera = function() {
       if (!manipulatingCamera) {
@@ -10764,7 +10760,9 @@
      * @see endCamera
      * @see frustum
      */
-    p.camera = function(eyeX, eyeY, eyeZ, centerX, centerY, centerZ, upX, upY, upZ) {
+    Drawing2D.prototype.camera = DrawingShared.prototype.a3DOnlyFunction;
+
+    Drawing3D.prototype.camera = function(eyeX, eyeY, eyeZ, centerX, centerY, centerZ, upX, upY, upZ) {
       if (eyeX === undef) {
         // Workaround if createGraphics is used. 
         cameraX = p.width / 2;
@@ -10827,7 +10825,9 @@
      * @param {float} zNear   z-position of nearest clipping plane
      * @param {float} zFar    z-positions of farthest clipping plane
      */
-    p.perspective = function(fov, aspect, near, far) {
+    Drawing2D.prototype.perspective = DrawingShared.prototype.a3DOnlyFunction;
+
+    Drawing3D.prototype.perspective = function(fov, aspect, near, far) {
       if (arguments.length === 0) {
         //in case canvas is resized
         cameraY = curElement.height / 2;
@@ -10865,9 +10865,7 @@
      * @see endCamera
      * @see perspective
      */
-    Drawing2D.prototype.frustum = function() {
-      throw("Processing.js: frustum() is not supported in 2D mode");
-    };
+    Drawing2D.prototype.frustum = DrawingShared.prototype.a3DOnlyFunction;
 
     Drawing3D.prototype.frustum = function(left, right, bottom, top, near, far) {
       frustumMode = true;
@@ -10901,7 +10899,9 @@
      * @param {float} near   maximum distance from the origin to the viewer
      * @param {float} far    maximum distance from the origin away from the viewer
      */
-    p.ortho = function(left, right, bottom, top, near, far) {
+    Drawing2D.prototype.ortho = DrawingShared.prototype.a3DOnlyFunction;
+
+    Drawing3D.prototype.ortho = function(left, right, bottom, top, near, far) {
       if (arguments.length === 0) {
         left = 0;
         right = p.width;
@@ -10936,13 +10936,17 @@
     /**
      * The printProjection() prints the current projection matrix to the text window.
      */
-    p.printProjection = function() {
+    Drawing2D.prototype.printProjection = DrawingShared.prototype.a3DOnlyFunction;
+
+    Drawing3D.prototype.printProjection = function() {
       projection.print();
     };
     /**
      * The printCamera() function prints the current camera matrix.
      */
-    p.printCamera = function() {
+    Drawing2D.prototype.printCamera = DrawingShared.prototype.a3DOnlyFunction;
+
+    Drawing3D.prototype.printCamera = function() {
       cam.print();
     };
 
@@ -11134,7 +11138,9 @@
      *
      * @see #sphere()
      */
-    p.sphereDetail = function(ures, vres) {
+    Drawing2D.prototype.sphereDetail = DrawingShared.prototype.a3DOnlyFunction;
+
+    Drawing3D.prototype.sphereDetail = function(ures, vres) {
       var i;
 
       if (arguments.length === 1) {
@@ -11297,7 +11303,9 @@
      * @see modelY
      * @see modelZ
     */
-    p.modelX = function(x, y, z) {
+    Drawing2D.prototype.modelX = DrawingShared.prototype.a3DOnlyFunction;
+
+    Drawing3D.prototype.modelX = function(x, y, z) {
       var mv = modelView.array();
       var ci = cameraInv.array();
 
@@ -11329,7 +11337,9 @@
      * @see modelX
      * @see modelZ
     */
-    p.modelY = function(x, y, z) {
+    Drawing2D.prototype.modelY = DrawingShared.prototype.a3DOnlyFunction;
+
+    Drawing3D.prototype.modelY = function(x, y, z) {
       var mv = modelView.array();
       var ci = cameraInv.array();
 
@@ -11360,7 +11370,9 @@
      * @see modelX
      * @see modelY
     */
-    p.modelZ = function(x, y, z) {
+    Drawing2D.prototype.modelZ = DrawingShared.prototype.a3DOnlyFunction;
+
+    Drawing3D.prototype.modelZ = function(x, y, z) {
       var mv = modelView.array();
       var ci = cameraInv.array();
 
@@ -11517,7 +11529,9 @@
      * @see screenY
      * @see screenZ
     */
-    p.screenX = function( x, y, z ) {
+    Drawing2D.prototype.screenX = DrawingShared.prototype.a3DOnlyFunction;
+
+    Drawing3D.prototype.screenX = function( x, y, z ) {
       var mv = modelView.array();
       if( mv.length === 16 )
       {
@@ -11553,7 +11567,9 @@
      * @see screenX
      * @see screenZ
     */
-    p.screenY = function screenY( x, y, z ) {
+    Drawing2D.prototype.screenY = DrawingShared.prototype.a3DOnlyFunction;
+
+    Drawing3D.prototype.screenY = function screenY( x, y, z ) {
       var mv = modelView.array();
       if( mv.length === 16 ) {
         var ax = mv[ 0]*x + mv[ 1]*y + mv[ 2]*z + mv[ 3];
@@ -11588,7 +11604,9 @@
      * @see screenX
      * @see screenY
     */
-    p.screenZ = function screenZ( x, y, z ) {
+    Drawing2D.prototype.screenZ = DrawingShared.prototype.a3DOnlyFunction;
+
+    Drawing3D.prototype.screenZ = function screenZ( x, y, z ) {
       var mv = modelView.array();
       if( mv.length !== 16 ) {
         return 0;
