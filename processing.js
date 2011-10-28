@@ -2726,9 +2726,14 @@
     DrawingPre.prototype = new DrawingShared();
     DrawingPre.prototype.constructor = DrawingPre;
 
-    // A no-op function for when the user calls 3D functions from a 2D sketch
-    // We can change this to a throw or console.error() later if we want
-    DrawingShared.prototype.a3DOnlyFunction = nop;
+    //Throws an error that informs the user that the current method is not supported
+    //in te 2D rendering mode.
+    var throwError2DMode = function(){
+	  throw(arguments.callee.toString() + "() is not supported in 2D mode.");
+    }
+
+    DrawingShared.prototype.a3DOnlyFunction = throwError2DMode;
+	
 
     ////////////////////////////////////////////////////////////////////////////
     // Char handling
