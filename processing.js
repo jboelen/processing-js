@@ -7302,7 +7302,7 @@
       var p = Math.round((b * (100 - s)) / 10000 * 255);
       var q = Math.round((b * (6000 - s * f)) / 600000 * 255);
       var t = Math.round((b * (6000 - s * (60 - f))) / 600000 * 255);
-      switch (Math.floor(hue / 60)) {
+      switch (Math.floor(Math.abs(hue) / 60)) {
       case 0:
         return [br, t, p];
       case 1:
