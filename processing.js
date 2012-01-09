@@ -19630,7 +19630,7 @@
           img.onerror = (function(){
             console.log("The file "+ this.src +" is missing or inaccessible, make sure the URL " +
             "is valid or that the file has been added to your sketch and is readable.");
-            this.src = "data:image/gif;base64,R0lGODlhAQABAJEAAAAAAAAAAP4BAgAAACH5BAQUAP8ALAAAAAABAAEAAAICRAEAOw%3D%3D";
+            this.src = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABAQMAAAAl21bKAAAAA1BMVEUAAACnej3aAAAAAXRSTlMAQObYZgAAAApJREFUCNdjYAAAAAIAAeIhvDMAAAAASUVORK5CYII%3D";
           });
           this.pending++;
           img.src = href;
